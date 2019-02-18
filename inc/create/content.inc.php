@@ -42,8 +42,22 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         #$phone = $_POST['phone'];
         $phone = $db->real_escape_string($_POST['phone']);
     }
+    // Add new data fields for gpa, financial_aid and degree_program
+
+    // Start the code for the following form sections.
+
+    # gpa field (a number)
+
+    #financial_aid field (radio button that has labels yes and no and values of 1 and 0 respectively)
+
+    # degree_program field (select tag with 5 options)
+
+
+    // put the new fields in to the errors statement with sql and values
 
     // If we have no errors than we can try and insert the data
+
+    // Add data for error bucket
     if (count($error_bucket) == 0) {
         // Time for some SQL
         $sql = "INSERT INTO $db_table (first_name,last_name,student_id,email,phone) ";
@@ -60,7 +74,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         } else {
             echo '<div class="alert alert-success" role="alert">
             I saved that new record for you!
-          </div>';
+            </div>';
             unset($first);
             unset($last);
             unset($id);

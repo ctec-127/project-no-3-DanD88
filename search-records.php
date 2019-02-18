@@ -10,6 +10,13 @@ require 'inc/app/config.inc.php';
 <div class="container">
     <div class="row">
         <div class="col-lg-12 mt-4">
+
+        <!-- enter data for new data fields
+        #gpa
+        #financial_aid
+        #degree_program
+        -->
+
         <?php 
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 if(!empty($_POST['search'])){

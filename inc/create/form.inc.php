@@ -10,7 +10,7 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
     <input class="form-control" type="text" id="first" name="first" value="<?php echo (isset($first) ? $first: '');?>">
     <br>
     <label class="col-form-label" for="last">Last Name </label>
-    <input class="form-control" type="text" id="last" name="last" value="<?php echo (isset($last) ? $first: '');?>"">
+    <input class="form-control" type="text" id="last" name="last" value="<?php echo (isset($last) ? $last: '');?>"">
     <br>
     <label class="col-form-label" for="id">Student ID </label>
     <input class="form-control" type="text" id="id" name="id" value="<?php echo (isset($id) ? $id: '');?>"">
@@ -21,6 +21,13 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
     <label class="col-form-label" for="phone">Phone </label>
     <input class="form-control" type="text" id="phone" name="phone" value="<?php echo (isset($phone) ? $phone: '');?>"">
     <br>
+
+    <!-- Add input fields for gpa, financial aid, and degree program 
+    # gpa: field for a number (3.5)
+    # financial aid: radio buttons with yes or no and values of 1 or 0
+    # degree program: a select tag with 5 options
+    -->
+
     <a href="display-records.php">Cancel</a>&nbsp;&nbsp;
     <button class="btn btn-primary" type="submit">Save Record</button>
 </form>
