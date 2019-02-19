@@ -1,5 +1,5 @@
 <?php // Filename: search-records.php
-
+// allows a search to be input and shows the result or a error message
 $pageTitle = "Search Records";
 require 'inc/layout/header.inc.php';
 require 'inc/db/mysqli_connect.inc.php';

@@ -1,4 +1,5 @@
 <?php // Filename: create-record.php
+// allows a new record to be created. Information goes through content.inc.php to check if all fields are set.
 $pageTitle = "Create Record";
 require 'inc/layout/header.inc.php'; 
 ?>

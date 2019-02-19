@@ -1,5 +1,7 @@
 <?php // Filename: display-records.php
 
+// displays the data for the students table.   
+
 $pageTitle = "Record Management";
 require 'inc/layout/header.inc.php'; 
 ?>
