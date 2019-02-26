@@ -21,8 +21,29 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
     <label class="col-form-label" for="phone">Phone </label>
     <input class="form-control" type="text" id="phone" name="phone" value="<?php echo (isset($phone) ? $phone: '');?>"">
     <br>
+    <!-- New code for form -->
+    <label class="col-form-label" for="gpa">GPA </label>
+    <input class="form-control" type="text" id="gpa" name="gpa" value="<?php echo (isset($gpa) ? $gpa: ''); ?>">
+    <br>
+    <label for="financial-aid" class="col-form-label">Financial Aid</label>
+    <br><br>
+    <input type="radio" name="financial_aid" id="yes" value="yes" <?php echo (isset($yes) ? $yes: '1');?>> Yes
+    <input type="radio" name="financial_aid" id="no" value="no" <?php echo (isset($no) ? $no: '0');?>> No
+    <br><br>
+    <label for="degree_program" class="col-form-label">Degree Program</label>
+    <select name="degree_program" id="degree" class="form-control" value="<?php echo (isset($degree_program) ? $degree_program: ''); ?>">
+        <option value="select" >--Select--</option>
+        <option value="Web Development">Web Development</option>
+        <option value="Environmental Science">Environmental Science</option>
+        <option value="Engineering">Engineering</option>
+        <option value="Graphic Design">Graphic Design</option>
+        <option value="Computer Science">Computer Science</option>
+    </select>
+    <br><br>
 
-    <!-- Add input fields for gpa, financial aid, and degree program 
+
+    <!-- 
+        Add input fields for gpa, financial aid, and degree program 
     # gpa: field for a number (3.5)
     # financial aid: radio buttons with yes or no and values of 1 or 0
     # degree program: a select tag with 5 options
