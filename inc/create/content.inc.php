@@ -49,18 +49,32 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         #$gpa = $_POST['gpa'];
         $gpa = $db->real_escape_string($_POST['gpa']);
     }
+    // Code to make the radio buttons functional
     if (empty($_POST['financial_aid'])) {
         array_push($error_bucket,"<p>Financial Aid is required.</p>");
     } else {
-        #$financial_aid = $_POST['financial_aid'];
-        $financial_aid = $db->real_escape_string($_POST['financial_aid']);
+        $financial_aid = $_POST['financial_aid'];
+        // var_dump($financial_aid_val);
+        if ($financial_aid == "yes"){
+            $db_val = 1;
+        }
+        if ($financial_aid == "no"){
+            $db_val = 0;
+        }
+
+        $financial_aid = $db->real_escape_string($db_val);
     }
+
     if (empty($_POST['degree_program'])) {
         array_push($error_bucket,"<p>A Degree Program is required.</p>");
     } else {
         #$degree_program = $_POST['degree_program'];
         $degree_program = $db->real_escape_string($_POST['degree_program']);
     }
+
+    // Degree_Program
+
+   
     // Add new data fields for gpa, financial_aid and degree_program
 
     // Start the code for the following form sections.
@@ -80,7 +94,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     if (count($error_bucket) == 0) {
         // Time for some SQL
         $sql = "INSERT INTO $db_table (first_name,last_name,student_id,email,phone,gpa,financial_aid,degree_program) ";
-        $sql .= "VALUES ('$first','$last',$id,'$email','$phone','$gpa','$financial_aid','degree_program')";
+        $sql .= "VALUES ('$first','$last',$id,'$email','$phone','$gpa','$financial_aid','$degree_program')";
 
         // comment in for debug of SQL
         // echo $sql;
