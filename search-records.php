@@ -20,9 +20,14 @@ require 'inc/app/config.inc.php';
         <?php 
             if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 if(!empty($_POST['search'])){
-                    $sql = "SELECT * FROM $db_table WHERE " . '"' . $_POST["search"] . '"' . " IN (student_id, first_name, last_name, email, phone,gpa,financial_aid,degree_program) ORDER BY last_name ASC";
-                    // $sql = "SELECT * FROM student WHERE student_id LIKE '%val%' or field2 LIKE '%val%'
+                    $search = $_POST['search'];
+                    $sql = "SELECT * FROM $db_table WHERE " . '"' . $search . '"' . " IN (first_name, last_name, student_id, email, phone, degree_program) ORDER BY last_name ASC";
+                    //$sql = "SELECT * FROM $db_table WHERE \"$search\"  IN (first_name, last_name, student_id, email, financial_aid, phone, degree_program)";
+                    
+                    // $sql = "SELECT * FROM" . " $db_table " . "WHERE (last_name LIKE \"%$search%\" OR first_name LIKE \"%$search%\" OR student_id LIKE \"%$search%\" OR gpa LIKE \"%$search%\")";
                     $result = $db->query($sql);
+                    var_dump($search);
+
 
                     if ($result->num_rows == 0) {
                         echo "<p class=\"display-4 mt-4 text-center\">No results found for \"<strong>{$_POST['search']}</strong>\"</p>";
@@ -44,3 +49,4 @@ require 'inc/app/config.inc.php';
 </div>
 
 <?php require 'inc/layout/footer.inc.php';?>
+

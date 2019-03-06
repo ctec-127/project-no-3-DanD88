@@ -55,6 +55,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     } else {
         $financial_aid = $_POST['financial_aid'];
         // var_dump($financial_aid_val);
+        //checks for radio button value
         if ($financial_aid == "yes"){
             $db_val = 1;
         }
