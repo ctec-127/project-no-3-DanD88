@@ -3,7 +3,7 @@
 $pageTitle = "Search Records";
 require 'inc/layout/header.inc.php';
 require 'inc/db/mysqli_connect.inc.php';
-require 'inc/functions/functions.inc.php';
+//require 'inc/functions/functions.inc.php';
 require 'inc/app/config.inc.php';
 ?>
 

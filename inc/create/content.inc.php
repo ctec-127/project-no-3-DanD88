@@ -1,10 +1,15 @@
 <?php // Filename: connect.inc.php
 
 require __DIR__ . "/../db/mysqli_connect.inc.php";
-require __DIR__ . "/../functions/functions.inc.php";
 require __DIR__ . "/../app/config.inc.php";
 
 $error_bucket = [];
+
+    // if not selected then the value of the buttons is empty++
+
+    $yes = '';
+    $no = '';
+    $db_value = 0;
 
 // http://php.net/manual/en/mysqli.real-escape-string.php
 
@@ -13,58 +18,69 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     if (empty($_POST['first'])) {
         array_push($error_bucket,"<p>A first name is required.</p>");
     } else {
-        # Old way
-        #$first = $_POST['first'];
         # New way
-        $first = $db->real_escape_string($_POST['first']);
+        $first = $db->real_escape_string(strip_tags($_POST['first']));
     }
     if (empty($_POST['last'])) {
         array_push($error_bucket,"<p>A last name is required.</p>");
     } else {
         #$last = $_POST['last'];
-        $last = $db->real_escape_string($_POST['last']);
+        $last = $db->real_escape_string(strip_tags($_POST['last']));
     }
-    if (empty($_POST['id'])) {
+    if (empty($_POST['sid'])) {
         array_push($error_bucket,"<p>A student ID is required.</p>");
     } else {
         #$id = $_POST['id'];
-        $id = $db->real_escape_string($_POST['id']);
+        $sid = $db->real_escape_string(strip_tags($_POST['sid']));
     }
     if (empty($_POST['email'])) {
         array_push($error_bucket,"<p>An email address is required.</p>");
     } else {
         #$email = $_POST['email'];
-        $email = $db->real_escape_string($_POST['email']);
+        $email = $db->real_escape_string(strip_tags($_POST['email']));
     }
     if (empty($_POST['phone'])) {
         array_push($error_bucket,"<p>A phone number is required.</p>");
     } else {
         #$phone = $_POST['phone'];
-        $phone = $db->real_escape_string($_POST['phone']);
+        $phone = $db->real_escape_string(strip_tags($_POST['phone']));
     }
     // new code
     if (empty($_POST['gpa'])) {
         array_push($error_bucket,"<p>GPA is required.</p>");
     } else {
         #$gpa = $_POST['gpa'];
-        $gpa = $db->real_escape_string($_POST['gpa']);
+        $gpa = $db->real_escape_string(strip_tags($_POST['gpa']));
     }
     // Code to make the radio buttons functional
     if (empty($_POST['financial_aid'])) {
         array_push($error_bucket,"<p>Financial Aid is required.</p>");
     } else {
+
+        // create financial aid
         $financial_aid = $_POST['financial_aid'];
         // var_dump($financial_aid_val);
         //checks for radio button value
         if ($financial_aid == "yes"){
+            $yes = 'checked';
             $db_val = 1;
         }
         if ($financial_aid == "no"){
+            $no = 'checked';
             $db_val = 0;
         }
 
+        # update financial aid
         $financial_aid = $db->real_escape_string($db_val);
-    }
+
+        if ($financial_aid == 1) {
+            $yes = 'checked';
+        } if ($financial_aid == 0) {
+            $no = 'checked';
+        }
+    
+
+
 
     if (empty($_POST['degree_program'])) {
         array_push($error_bucket,"<p>A Degree Program is required.</p>");
@@ -90,12 +106,12 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     // put the new fields in to the errors statement with sql and values
 
     // If we have no errors than we can try and insert the data
-
+    var_dump($financial_aid);
     // Add data for error bucket
     if (count($error_bucket) == 0) {
         // Time for some SQL
-        $sql = "INSERT INTO $db_table (first_name,last_name,student_id,email,phone,gpa,financial_aid,degree_program) ";
-        $sql .= "VALUES ('$first','$last',$id,'$email','$phone','$gpa','$financial_aid','$degree_program')";
+        $sql = "INSERT INTO $db_table (first_name, last_name, student_id, email, phone, gpa, financial_aid, degree_program) ";
+        $sql .= "VALUES ('$first','$last',$sid,'$email','$phone','$gpa','$financial_aid','$degree_program')";
 
         // comment in for debug of SQL
         // echo $sql;
@@ -111,7 +127,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             </div>';
             unset($first);
             unset($last);
-            unset($id);
+            unset($sid);
             unset($email);
             unset($phone);
             unset($gpa);
