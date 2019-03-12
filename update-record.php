@@ -22,6 +22,7 @@ require 'inc/layout/header.inc.php';
 	<?php 
 	if (isset($_GET['id'])) {
 		$id = $_GET['id'];
+		
 		$update = true;
 		$record = mysqli_query($db, "SELECT * FROM db_table WHERE id=$id");
 
