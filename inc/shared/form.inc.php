@@ -45,7 +45,7 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
         if ($_POST['financial_aid'] == 'yes') {
             $yes = 'checked';
             
-        } elseif ($_POST['financial_aid' == 'no']) {
+        } elseif ($_POST['financial_aid'] == 'no') {
             $no = 'checked';
             
         }

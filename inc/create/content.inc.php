@@ -5,6 +5,8 @@ $error_bucket = [];
     // if not selected then the value of the buttons is empty++
     $yes = '';
     $no = '';
+    // $financial_aid = '';
+    // $db_val = '';
     $db_value = 0;
 // http://php.net/manual/en/mysqli.real-escape-string.php
 if($_SERVER['REQUEST_METHOD']=="POST"){
@@ -47,22 +49,25 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         $gpa = $db->real_escape_string(strip_tags($_POST['gpa']));
     }
     // Code to make the radio buttons functional
+
     if (empty($_POST['financial_aid'])) {
         array_push($error_bucket,"<p>Financial Aid is required.</p>");
     } else {
         // create financial aid
         $financial_aid = $_POST['financial_aid'];
         }
-        // var_dump($financial_aid_val);
+        
         //checks for radio button value
         if ($financial_aid == "yes"){
             $yes = 'checked';
-            $db_val = 1;
-        }
+            $db_value = 1;
+        } 
+
         if ($financial_aid == "no"){
             $no = 'checked';
-            $db_val = 0;
-        }
+            $db_value = 0;
+        }   
+
         # update financial aid
         $financial_aid = $db->real_escape_string($db_val);
         if ($financial_aid == 1) {
@@ -78,7 +83,6 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         $degree_program = $db->real_escape_string($_POST['degree_program']);
     }
     // Degree_Program
-
     // Add new data fields for gpa, financial_aid and degree_program
     // Start the code for the following form sections.
     # gpa field (a number)

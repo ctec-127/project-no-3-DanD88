@@ -26,7 +26,7 @@ require 'inc/app/config.inc.php';
                     
                     // $sql = "SELECT * FROM" . " $db_table " . "WHERE (last_name LIKE \"%$search%\" OR first_name LIKE \"%$search%\" OR student_id LIKE \"%$search%\" OR gpa LIKE \"%$search%\")";
                     $result = $db->query($sql);
-                    var_dump($search);
+                    // var_dump($search);
 
 
                     if ($result->num_rows == 0) {
