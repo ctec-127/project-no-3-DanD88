@@ -69,7 +69,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         }   
 
         # update financial aid
-        $financial_aid = $db->real_escape_string($db_val);
+        $financial_aid = $db->real_escape_string($db_value);
         if ($financial_aid == 1) {
             $yes = 'checked';
         } if ($financial_aid == 0) {
