@@ -1,18 +1,12 @@
 <?php // Filename: connect.inc.php
-
 require __DIR__ . "/../db/mysqli_connect.inc.php";
 require __DIR__ . "/../app/config.inc.php";
-
 $error_bucket = [];
-
     // if not selected then the value of the buttons is empty++
-
     $yes = '';
     $no = '';
     $db_value = 0;
-
 // http://php.net/manual/en/mysqli.real-escape-string.php
-
 if($_SERVER['REQUEST_METHOD']=="POST"){
     // First insure that all required fields are filled in
     if (empty($_POST['first'])) {
@@ -56,9 +50,9 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     if (empty($_POST['financial_aid'])) {
         array_push($error_bucket,"<p>Financial Aid is required.</p>");
     } else {
-
         // create financial aid
         $financial_aid = $_POST['financial_aid'];
+        }
         // var_dump($financial_aid_val);
         //checks for radio button value
         if ($financial_aid == "yes"){
@@ -69,42 +63,28 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             $no = 'checked';
             $db_val = 0;
         }
-
         # update financial aid
         $financial_aid = $db->real_escape_string($db_val);
-
         if ($financial_aid == 1) {
             $yes = 'checked';
         } if ($financial_aid == 0) {
             $no = 'checked';
         }
     
-
-
-
     if (empty($_POST['degree_program'])) {
         array_push($error_bucket,"<p>A Degree Program is required.</p>");
     } else {
         #$degree_program = $_POST['degree_program'];
         $degree_program = $db->real_escape_string($_POST['degree_program']);
     }
-
     // Degree_Program
 
-   
     // Add new data fields for gpa, financial_aid and degree_program
-
     // Start the code for the following form sections.
-
     # gpa field (a number)
-
     #financial_aid field (radio button that has labels yes and no and values of 1 and 0 respectively)
-
     # degree_program field (select tag with 5 options)
-
-
     // put the new fields in to the errors statement with sql and values
-
     // If we have no errors than we can try and insert the data
     var_dump($financial_aid);
     // Add data for error bucket
@@ -112,10 +92,8 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         // Time for some SQL
         $sql = "INSERT INTO $db_table (first_name, last_name, student_id, email, phone, gpa, financial_aid, degree_program) ";
         $sql .= "VALUES ('$first','$last',$sid,'$email','$phone','$gpa','$financial_aid','$degree_program')";
-
         // comment in for debug of SQL
         // echo $sql;
-
         $result = $db->query($sql);
         if (!$result) {
             echo '<div class="alert alert-danger" role="alert">
@@ -138,5 +116,4 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         display_error_bucket($error_bucket);
     }
 }
-
 ?>

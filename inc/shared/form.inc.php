@@ -38,11 +38,9 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
     <br><br>
 
     <?php
-
     $yes = "";
     $no = "";
     
-
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($_POST['financial_aid'] == 'yes') {
             $yes = 'checked';
@@ -52,10 +50,8 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
             
         }
     }
-
     
         
-
     ?>
     
     <label for="yes">Yes:</label>
