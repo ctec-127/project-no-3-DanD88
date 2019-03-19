@@ -5,21 +5,21 @@
 Scroll down the page
 http://php.net/manual/en/language.operators.comparison.php#language.operators.comparison.ternary
 -->
-
-<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
-    <label class="col-form-label" for="first">First Name </label>
-    <input class="form-control" type="text" id="first" name="first" value="<?php echo (isset($first) ? $first: '');?>">
+<div class="container-fluid bg-dark"></div>
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" class="bg-light p-4">
+    <label class="col-form-label col-form-label-lg font-weight-bold" for="first">First Name </label>
+    <input class="form-control col-form-label-lg" type="text" id="first" name="first" value="<?php echo (isset($first) ? $first: '');?>">
     <br>
-    <label class="col-form-label" for="last">Last Name </label>
+    <label class="col-form-label col-form-label-lg font-weight-bold" for="last">Last Name </label>
     <input class="form-control" type="text" id="last" name="last" value="<?php echo (isset($last) ? $last: '');?>"">
     <br>
-    <label class="col-form-label" for="id">Student ID </label>
+    <label class="col-form-label col-form-label-lg font-weight-bold" for="id">Student ID </label>
     <input class="form-control" type="text" id="sid" name="sid" value="<?php echo (isset($sid) ? $sid: '');?>"">
     <br>
-    <label class="col-form-label" for="email">Email </label>
+    <label class="col-form-label col-form-label-lg font-weight-bold" for="email">Email </label>
     <input class="form-control" type="text" id="email" name="email" value="<?php echo (isset($email) ? $email: '');?>"">
     <br>
-    <label class="col-form-label" for="phone">Phone </label>
+    <label class="col-form-label col-form-label-lg font-weight-bold" for="phone">Phone </label>
     <input class="form-control" type="text" id="phone" name="phone" value="<?php echo (isset($phone) ? $phone: '');?>"">
     <br>
     <!-- New code for form -->
@@ -31,10 +31,10 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
     # degree program: a select tag with 5 options
     -->
 
-    <label class="col-form-label" for="gpa">GPA </label>
+    <label class="col-form-label col-form-label-lg font-weight-bold" for="gpa">GPA </label>
     <input class="form-control" type="text" id="gpa" name="gpa" value="<?php echo (isset($gpa) ? $gpa: ''); ?>">
     <br>
-    <label for="financial-aid" class="col-form-label">Financial Aid</label>
+    <label for="financial-aid" class="col-form-label col-form-label-lg font-weight-bold">Financial Aid</label>
     <br><br>
 
     <?php
@@ -54,11 +54,11 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
         
     ?>
     
-    <label for="yes">Yes:</label>
-    <input type="radio" name="financial_aid" id="yes" value="yes" <?php echo $yes; ?> >
+    <label class="form-check-label font-weight-bold" for="yes">Yes:</label>
+    <input type="radio" class="form-check-label" name="financial_aid" id="yes" value="yes" <?php echo $yes; ?> >
 
-    <label for="no">No:</label>
-    <input type="radio" name="financial_aid" id="no" value="no" <?php echo $no; ?> >
+    <label class="form-check-label font-weight-bold " for="no">No:</label>
+    <input type="radio" class="form-check-label" name="financial_aid" id="no" value="no" checked="checked" <?php echo $no; ?> >
     <br><br>
 
     <!--makes degree_program sticky -->
@@ -72,7 +72,7 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
 
     
 
-    <label for="degree_program" class="col-form-label">Degree Program</label>
+    <label for="degree_program" class="col-form-label col-form-label-lg font-weight-bold">Degree Program</label>
     <select name="degree_program" id="degree" class="form-control">
         <option value="select" <?=($degree_program == "select") ? ' selected': '';?> >--Select a Degree Program--</option>
         <option value="Web_Development" <?=($degree_program == "Web_Development") ? ' selected': '';?> >Web Development</option>
@@ -81,9 +81,15 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
         <option value="Graphic_Design" <?=($degree_program == "Graphic_Design") ? ' selected': '';?> >Graphic Design</option>
         <option value="Computer_Science" <?=($degree_program == "Computer_Science") ? ' selected': '';?> >Computer Science</option>
     </select>
-    <br><br> 
-    
-    <br><br> 
+    <br>
+
+    <div class="form-group mb-1">
+        <label class="col-form-label pb-2 col-form-label-lg font-weight-bold" for="graduation_date">Graduation Date</label>
+        <br />
+        <input type="date" class="form-control" name="graduation_date" id="graduation_date" value="<?php echo (isset($graduation_date) ? $graduation_date: '');?>">
+    </div>
+    <br>
+
 
 
     <!--<?php if ($update == true): ?>
@@ -97,3 +103,4 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
         <button class="btn btn-primary" type="submit">Save Record</button>
     <input type="hidden" name="id" value="<?php echo (isset($id) ? $id : '');?>"> 
 </form>
+</div>

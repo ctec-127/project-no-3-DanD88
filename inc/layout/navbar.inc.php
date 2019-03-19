@@ -8,13 +8,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item <?=echoActiveClassIfRequestMatches("display-records");?>">
-        <a class="nav-link" href="display-records.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link font-weight-bold" href="display-records.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item <?= echoActiveClassIfRequestMatches("create-record");?>"">
-        <a class="nav-link" href="create-record.php">Create Record</a>
+        <a class="nav-link font-weight-bold" href="create-record.php">Create Record</a>
+      </li>
+      <li class="nav-item <?= echoActiveClassIfRequestMatches("advanced-search");?>"">
+        <a class="nav-link font-weight-bold" href="advanced-search.php">Advanced Search</a>
       </li>
 
-      <li class="nav-item dropdown">
+      <li class="nav-item font-weight-bold dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Resources
         </a>
@@ -27,7 +30,7 @@
     </ul>
     <form action="search-records.php" method="POST" class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Last Name" name="search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </nav>

@@ -8,5 +8,10 @@ body {
 }
 
 th a:link, th a:visited, th a:hover, th a:active {
-    color: #ffffff;
+    color: 	#008B8B;
 }
+
+.jumbotron {
+    border-radius: 0;
+}
+

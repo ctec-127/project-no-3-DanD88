@@ -6,7 +6,7 @@
 function display_message(){
     if (isset($_GET['message'])) {
         $message = $_GET['message'];
-        echo '<div class="mt-4 alert alert-success" role="alert">';
+        echo '<div class="mt-4 mb-2 alert alert-" role="alert">';
         echo $message;
         echo '</div>';
     }
@@ -16,19 +16,19 @@ function display_message(){
 // The purpose is to filter all students by a letter for last name.
 
 function display_letter_filters($filter){  
-    echo '<span class="mr-3">Filter by <strong>Last Name</strong></span>';
+    echo '<span class="p-4 my-2 mr-3">Filter by <strong>Last Name</strong></span>';
 
     $letters = range('A','Z');
 
     for($i=0 ; $i < count($letters) ; $i++){ 
         if ($filter == $letters[$i]) {
-            $class = 'class="text-light font-weight-bold p-1 mr-3 bg-dark"';
+            $class = 'class="text-light font-weight-bold p-1 mr-3 bg-dark border rounded"';
         } else {
             $class = 'class="text-secondary p-1 mr-3 bg-light border rounded"';
         }
         echo "<u><a $class href='?filter=$letters[$i]' title='$letters[$i]'>$letters[$i]</a></u>";
     }
-    echo '<a class="text-secondary p-2 mr-2 bg-success text-light border rounded" href="?clearfilter" title="Reset Filter">Reset</a>&nbsp;&nbsp;';
+    echo '<a class="text-secondary p-2 mr-2 bg-danger text-light border rounded" href="?clearfilter" title="Reset Filter">Reset</a>&nbsp;&nbsp;';
 }
 
 // add the new data fields for displaying records

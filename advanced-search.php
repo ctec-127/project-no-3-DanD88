@@ -4,33 +4,35 @@ $pageTitle = "Advanced Search";
 require_once 'inc/layout/header.inc.php'; 
 ?>
 
-            
+    <div class="jumbotron bg-info ">
+	    <h1 class="font-weight-bold display-4 p-4 ">Advanced Search</h1>
+	</div>           
 
 <div class="container">
 	<div class="row mt-5">
 		<div class="col-lg-12">
-			<h1>Advanced Search</h1>
+			
             
     
         <?php require 'inc/db/mysqli_connect.inc.php'; ?>
         <?php require 'inc/app/config.inc.php'; ?>
         
             
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
-        <label class="col-form-label" for="first">First Name </label>
-        <input class="form-control" type="text" id="first" name="first" value="<?php echo (isset($first) ? $first: '');?>">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST" class="bg-light p-4">
+        <label class="col-form-label col-form-label-lg font-weight-bold" for="first">First Name </label>
+        <input class="form-control col-form-label-lg" type="text" id="first" name="first" value="<?php echo (isset($first) ? $first: '');?>">
         <br>
-        <label class="col-form-label" for="last">Last Name </label>
-        <input class="form-control" type="text" id="last" name="last" value="<?php echo (isset($last) ? $last: '');?>">
+        <label class="col-form-label col-form-label-lg font-weight-bold" for="last">Last Name </label>
+        <input class="form-control" type="text" id="last" name="last" value="<?php echo (isset($last) ? $last: '');?>"">
         <br>
-        <label class="col-form-label" for="id">Student ID </label>
-        <input class="form-control" type="text" id="sid" name="sid" value="<?php echo (isset($sid) ? $sid: '');?>">
+        <label class="col-form-label col-form-label-lg font-weight-bold" for="id">Student ID </label>
+        <input class="form-control" type="text" id="sid" name="sid" value="<?php echo (isset($sid) ? $sid: '');?>"">
         <br>
-        <label class="col-form-label" for="email">Email </label>
-        <input class="form-control" type="text" id="email" name="email" value="<?php echo (isset($email) ? $email: '');?>">
+        <label class="col-form-label col-form-label-lg font-weight-bold" for="email">Email </label>
+        <input class="form-control" type="text" id="email" name="email" value="<?php echo (isset($email) ? $email: '');?>"">
         <br>
-        <label class="col-form-label" for="phone">Phone </label>
-        <input class="form-control" type="text" id="phone" name="phone" value="<?php echo (isset($phone) ? $phone: '');?>">
+        <label class="col-form-label col-form-label-lg font-weight-bold" for="phone">Phone </label>
+        <input class="form-control" type="text" id="phone" name="phone" value="<?php echo (isset($phone) ? $phone: '');?>"">
         <br>
     <!-- New code for form -->
 
@@ -41,10 +43,10 @@ require_once 'inc/layout/header.inc.php';
     # degree program: a select tag with 5 options
     -->
 
-        <label class="col-form-label" for="gpa">GPA</label>
-        <input class="form-control" type="text" id="gpa" name="gpa" value="<?php echo (isset($gpa) ? $gpa: ''); ?>">
+        <label class="col-form-label col-form-label-lg font-weight-bold" for="gpa">GPA </label>
+            <input class="form-control" type="text" id="gpa" name="gpa" value="<?php echo (isset($gpa) ? $gpa: ''); ?>">
         <br>
-        <label for="financial-aid" class="col-form-label">Financial Aid</label>
+        <label for="financial-aid" class="col-form-label col-form-label-lg font-weight-bold">Financial Aid</label>
         <br><br>
 
         <?php
@@ -64,12 +66,13 @@ require_once 'inc/layout/header.inc.php';
             }
         ?>
         
-        <label for="yes">Yes:</label>
-        <input type="radio" name="financial_aid" id="yes" value="yes" <?php echo $yes; ?> >
+        <label class="form-check-label font-weight-bold" for="yes">Yes:</label>
+            <input type="radio" class="form-check-label" name="financial_aid" id="yes" value="yes" <?php echo $yes; ?> >
 
-        <label for="no">No:</label>
-        <input type="radio" name="financial_aid" id="no" value="no" <?php echo $no; ?> >
-        <br><br>
+            <label class="form-check-label font-weight-bold " for="no">No:</label>
+            <input type="radio" class="form-check-label" name="financial_aid" id="no" value="no" <?php echo $no; ?> >
+            <br><br>
+        
         <!--makes degree_program sticky -->
         <?php
         if (isset($_POST['degree_program'])){
@@ -81,23 +84,23 @@ require_once 'inc/layout/header.inc.php';
 
         
 
-        <label for="degree_program" class="col-form-label">Degree Program</label>
-        <select name="degree_program" id="degree" class="form-control">
-            <option value="select" <?=($degree_program == "select") ? ' selected': '';?> >--Select a Degree Program--</option>
-            <option value="Web_Development" <?=($degree_program == "Web_Development") ? ' selected': '';?> >Web Development</option>
-            <option value="Environmental_Science" <?=($degree_program == "Environmental_Science") ? ' selected': '';?> >Environmental Science</option>
-            <option value="Engineering" <?=($degree_program == "Engineering") ? ' selected': '';?> >Engineering</option>
-            <option value="Graphic_Design" <?=($degree_program == "Graphic_Design") ? ' selected': '';?> >Graphic Design</option>
-            <option value="Computer_Science" <?=($degree_program == "Computer_Science") ? ' selected': '';?> >Computer Science</option>
-        </select>
-        <br><br> 
+        <label for="degree_program" class="col-form-label col-form-label-lg font-weight-bold">Degree Program</label>
+            <select name="degree_program" id="degree" class="form-control">
+                <option value="select" <?=($degree_program == "select") ? ' selected': '';?> >--Select a Degree Program--</option>
+                <option value="Web_Development" <?=($degree_program == "Web_Development") ? ' selected': '';?> >Web Development</option>
+                <option value="Environmental_Science" <?=($degree_program == "Environmental_Science") ? ' selected': '';?> >Environmental Science</option>
+                <option value="Engineering" <?=($degree_program == "Engineering") ? ' selected': '';?> >Engineering</option>
+                <option value="Graphic_Design" <?=($degree_program == "Graphic_Design") ? ' selected': '';?> >Graphic Design</option>
+                <option value="Computer_Science" <?=($degree_program == "Computer_Science") ? ' selected': '';?> >Computer Science</option>
+            </select>
+            <br>
 
         <div class="form-group mb-1">
-            <label class="col-form-label pb-2" for="graduation_date">Graduation Date</label>
+            <label class="col-form-label pb-2 col-form-label-lg font-weight-bold" for="graduation_date">Graduation Date</label>
             <br />
-            <input type="date" name="graduation_date" id="graduation_date" value="<?php echo (isset($graduation_date) ? $graduation_date: '');?>">
+            <input type="date" class="form-control" name="graduation_date" id="graduation_date" value="<?php echo (isset($graduation_date) ? $graduation_date: '');?>">
         </div>
-    
+        <br>
 
 
         <!--<?php if ($update == true): ?>
@@ -108,7 +111,7 @@ require_once 'inc/layout/header.inc.php';
     <?php endif ?> -->
 
     <a href="display-records.php">Cancel</a>&nbsp;&nbsp;
-            <button class="btn btn-primary" type="submit">Search</button>
+            <button class="btn btn-success" type="submit">Search</button>
         <input type="hidden" name="id" value="<?php echo (isset($id) ? $id : '');?>"> 
     </form>
 
@@ -194,6 +197,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     $sql = 'SELECT * FROM student_v2 WHERE ' . $fields;
     $result = $db->query($sql);
+    
 
 // Checks to see if the form is empty
     if(!$result) {
@@ -213,6 +217,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "<h2 class=\"mt-4 text-center\">$result->num_rows record(s) found</h2>";
             display_record_table($result);
         }
+        
     }
 }
 

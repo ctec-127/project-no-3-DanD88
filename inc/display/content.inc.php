@@ -3,6 +3,9 @@
 require __DIR__ . "/../db/mysqli_connect.inc.php";
 // require __DIR__ . "/../functions/functions.inc.php";
 
+// Searches through the database for last names with starting with the selected letter.
+// Displays the last names found or says no records found.
+
 $orderby = 'last_name';
 $filter = '';
 
@@ -23,14 +26,14 @@ $sql = "SELECT * FROM $db_table WHERE last_name LIKE '$filter%' ORDER BY $orderb
 $result = $db->query($sql);
 
 if ($result->num_rows == 0) {
-    echo "<h2 class=\"mt-4 alert alert-warning\">No Records for <strong>last names</strong> starting with <strong>$filter</strong></h2>";
+    echo "<h2 class=\"mt-4 alert alert-warning\">No Records for <strong>Last Names</strong> starting with <strong>$filter</strong></h2>";
 } else {
     if(empty($filter)){
         $text = '';
     } else {
-        $text = " - last names starting with $filter";
+        $text = " - Last Names starting with $filter";
     }
-    echo "<h2 class=\"mt-4 alert alert-primary\">$result->num_rows Records" . $text . '</h2>';
+    echo "<h2 class=\"mt-4 alert alert-info\">$result->num_rows Records" . $text . '</h2>';
 }
 
 // display alphabet filters

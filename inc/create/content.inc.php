@@ -1,6 +1,7 @@
 <?php // Filename: connect.inc.php
 require __DIR__ . "/../db/mysqli_connect.inc.php";
 require __DIR__ . "/../app/config.inc.php";
+
 $error_bucket = [];
     // if not selected then the value of the buttons is empty++
     $yes = '';
@@ -82,6 +83,15 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         #$degree_program = $_POST['degree_program'];
         $degree_program = $db->real_escape_string($_POST['degree_program']);
     }
+
+    if (empty($_POST['graduation_date'])) {
+        array_push($error_bucket,"<p>A graduation date is required.</p>");
+    } else {
+        
+        $graduation_date = $db->real_escape_string($_POST['graduation_date']);
+    }
+
+
     // Degree_Program
     // Add new data fields for gpa, financial_aid and degree_program
     // Start the code for the following form sections.
@@ -90,12 +100,12 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     # degree_program field (select tag with 5 options)
     // put the new fields in to the errors statement with sql and values
     // If we have no errors than we can try and insert the data
-    var_dump($financial_aid);
+    
     // Add data for error bucket
     if (count($error_bucket) == 0) {
         // Time for some SQL
-        $sql = "INSERT INTO $db_table (first_name, last_name, student_id, email, phone, gpa, financial_aid, degree_program) ";
-        $sql .= "VALUES ('$first','$last',$sid,'$email','$phone','$gpa','$financial_aid','$degree_program')";
+        $sql = "INSERT INTO $db_table (first_name, last_name, student_id, email, phone, gpa, financial_aid, degree_program, graduation_date) ";
+        $sql .= "VALUES ('$first','$last',$sid,'$email','$phone','$gpa','$financial_aid','$degree_program','$graduation_date')";
         // comment in for debug of SQL
         // echo $sql;
         $result = $db->query($sql);
@@ -104,7 +114,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             I am sorry, but I could not save that record for you. ' .  
             $db->error . '.</div>';
         } else {
-            echo '<div class="alert alert-success" role="alert">
+            echo '<div class="alert alert-info" role="alert">
             I saved that new record for you!
             </div>';
             unset($first);
@@ -115,6 +125,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             unset($gpa);
             unset($financial_aid);
             unset($degree_program);
+            unset($graduation_date);
         }
     } else {
         display_error_bucket($error_bucket);
